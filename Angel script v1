@@ -1634,7 +1634,7 @@ misc1Folder:AddSwitch("No-Clip", function(bool)
 end)
 
 -- Add Infinite Jump toggle
-misc1Folder:AddSwitch("Jumpy Infinite", function(bool)
+misc1Folder:AddSwitch("Salto Infinito", function(bool)
     _G.InfiniteJump = bool
     
     if bool then
@@ -1679,7 +1679,7 @@ timeDropdown:Add("Day")
 timeDropdown:Add("Midnight")
 
 -- Create the Rebirth Farm folder in Spanish
-local rebirthFarmFolder = miscTab:AddFolder("Premium Farm")
+local rebirthFarmFolder = miscTab:AddFolder("Farm premium")
 
 opThingsFolder:AddSwitch("Auto Weight + Egg", function(state)
     _G.AutoWeightEgg = state
@@ -1708,7 +1708,7 @@ opThingsFolder:AddSwitch("Auto Weight + Egg", function(state)
     local function eatEgg()
         local backpack = player.Backpack
         local character = player.Character or player.CharacterAdded:Wait()
-        local egg = backpack:FindFirstChild("Protein Egg") or character:FindFirstChild("Protein Egg")
+        local egg = backpack:FindFirstChild("Protein Egg") or character:FindFirstChild("Auto egg (cada 30 mins)")
         if egg then
             if egg.Parent == backpack then
                 character.Humanoid:EquipTool(egg)
@@ -1793,9 +1793,9 @@ local function useOneEgg()
     ReplicatedStorage.rEvents.proteinEggEvent:FireServer("useEgg")
 end
 
-rebirthFarmFolder:AddLabel("OP Rebirth Farm (From HAVOC)")
+rebirthFarmFolder:AddLabel("Farmeo OP Rebirth (From Keyzorx)")
 
-rebirthFarmFolder:AddTextBox("Target Rebirth (Doesn't work, I Won't make it work)", function(text)
+rebirthFarmFolder:AddTextBox("Meta De Rebirths (Doesn't work, I Won't make it work)", function(text)
     targetRebirth = tonumber(text) or math.huge
 end)
 
@@ -1824,7 +1824,7 @@ local function unlockPlayerPosition()
 end
 
 -- Add position lock toggle
-rebirthFarmFolder:AddSwitch("Lock Position", function(bool)
+rebirthFarmFolder:AddSwitch("Bloquear tu posición", function(bool)
     if bool then
         -- Get current position and lock it
         if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
@@ -1837,7 +1837,7 @@ rebirthFarmFolder:AddSwitch("Lock Position", function(bool)
     end
 end)
 
-local packFarm = rebirthFarmFolder:AddSwitch("Rebirth Farm", function(bool)
+local packFarm = rebirthFarmFolder:AddSwitch("Auto Rebirth", function(bool)
     isRunning = bool
     
     task.spawn(function()
@@ -1881,7 +1881,7 @@ local packFarm = rebirthFarmFolder:AddSwitch("Rebirth Farm", function(bool)
     end)
 end)
 
-local frameToggle = rebirthFarmFolder:AddSwitch("Hide Frames", function(bool)
+local frameToggle = rebirthFarmFolder:AddSwitch("quitar particulas", function(bool)
     local rSto = game:GetService("ReplicatedStorage")
     for _, obj in pairs(rSto:GetChildren()) do
         if obj.Name:match("Frame$") then
@@ -1890,7 +1890,7 @@ local frameToggle = rebirthFarmFolder:AddSwitch("Hide Frames", function(bool)
     end
 end)
 
-local speedGrind = rebirthFarmFolder:AddSwitch("Fast Strength", function(bool)
+local speedGrind = rebirthFarmFolder:AddSwitch("Fuerza rapida", function(bool)
     local isGrinding = bool
     
     if not bool then
