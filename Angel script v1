@@ -7,7 +7,8 @@ if not player then
 end
 
 -- CONFIGURACIÓN
-local allowedUsernames =
+local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
+    "keyler632",
     "",
     "",
     "",
@@ -19,11 +20,11 @@ local allowedUsernames =
     "Tiomalo68",
 
 }
-local allowedUserIds =
-  -- 12345678, 2043745142,
+local allowedUserIds = { -- OPCIONAL: añade IDs si quieres máxima fiabilidad
+    -- 12345678, 2043745142,
 }
 
-
+-- Normaliza nombres a minúsculas para evitar fallos por mayúsculas
 local usernameSet = {}
 for _, n in ipairs(allowedUsernames) do
     usernameSet[string.lower(n)] = true
@@ -34,7 +35,7 @@ for _, id in ipairs(allowedUserIds) do
     userIdSet[id] = true
 end
 
-
+-- Chequeo
 local nameKey = string.lower(player.Name)
 local isWhitelisted = usernameSet[nameKey] or userIdSet[player.UserId] or false
 
@@ -45,9 +46,11 @@ end
 
 print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Name, player.UserId))
 
+-- ======================================================
+-- DESDE AQUÍ COLOCA TU PANTALLA DE CONTRASEÑA Y EL RESTO
+-- ======================================================
 
-
-
+-- CONFIGURACIÓN DE CONTRASEÑA
 local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseña aquí
 
 -- Crear GUI de contraseña
@@ -107,7 +110,9 @@ end)
 -- Esperar a que se ingrese la contraseña correcta
 repeat task.wait() until accessGranted
 
-
+-- =========================
+-- AQUÍ VA TU SCRIPT ORIGINAL
+-- =========================
 print("Contraseña correcta, ejecutando script...")
 
 -- Elerium v2 UI Library Implementation
