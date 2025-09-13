@@ -8,20 +8,11 @@ end
 
 -- CONFIGURACIÓN
 local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
-    "keyler632",
-    "",
-    "",
-    "",
-    "",
-    "Santiago178930193",
-    "edwart0022",
-    "Gabrielagustin20",
-    "Thomas2345z",
-    "Tiomalo68",
+    "keyler632"
 
 }
 local allowedUserIds = { -- OPCIONAL: añade IDs si quieres máxima fiabilidad
-    -- 12345678, 2043745142,
+    -- 12345678, 987654321,
 }
 
 -- Normaliza nombres a minúsculas para evitar fallos por mayúsculas
@@ -51,7 +42,7 @@ print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Nam
 -- ======================================================
 
 -- CONFIGURACIÓN DE CONTRASEÑA
-local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseña aquí
+local scriptPassword = "Keyzorxxx" -- Cambia la contraseña aquí
 
 -- Crear GUI de contraseña
 local ScreenGui = Instance.new("ScreenGui")
@@ -64,7 +55,7 @@ ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+Frame.BackgroundColor3 = Color3.fromRGB(181, 124, 0)
 Frame.Position = UDim2.new(0.5, -150, 0.5, -75)
 Frame.Size = UDim2.new(0, 300, 0, 150)
 
@@ -103,7 +94,7 @@ Button.MouseButton1Click:Connect(function()
         ScreenGui:Destroy() -- Eliminar GUI
     else
         TextLabel.Text = "Contraseña incorrecta"
-        TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        TextLabel.TextColor3 = Color3.fromRGB(225, 0, 0)
     end
 end)
 
@@ -148,8 +139,8 @@ end
 setupAntiAFK()
 
 -- Create Main Window
-local window = library:AddWindow("¿ÁNGELxGAYTON"¿, {
-    main_color = Color3.fromRGB(181, 73, 248),
+local window = library:AddWindow("Mileniums Hub Paid", {
+    main_color = Color3.fromRGB(181, 124, 0),
     min_size = Vector2.new(800, 900),
     can_resize = true,
 })
@@ -159,7 +150,7 @@ local mainTab = window:AddTab("Menu")
 local farmPlusTab = window:AddTab("Farm")
 mainTab:Show() -- Show this tab by default
 
-mainTab:AddLabel("ON*TOP")
+mainTab:AddLabel("Main")
 
 local jungleGymFolder = mainTab:AddFolder("Jungle Gym")
 
@@ -1634,7 +1625,7 @@ misc1Folder:AddSwitch("No-Clip", function(bool)
 end)
 
 -- Add Infinite Jump toggle
-misc1Folder:AddSwitch("Salto Infinito", function(bool)
+misc1Folder:AddSwitch("Jumpy Infinite", function(bool)
     _G.InfiniteJump = bool
     
     if bool then
@@ -1679,7 +1670,7 @@ timeDropdown:Add("Day")
 timeDropdown:Add("Midnight")
 
 -- Create the Rebirth Farm folder in Spanish
-local rebirthFarmFolder = miscTab:AddFolder("Farm premium")
+local rebirthFarmFolder = miscTab:AddFolder("Premium Farm")
 
 opThingsFolder:AddSwitch("Auto Weight + Egg", function(state)
     _G.AutoWeightEgg = state
@@ -1708,7 +1699,7 @@ opThingsFolder:AddSwitch("Auto Weight + Egg", function(state)
     local function eatEgg()
         local backpack = player.Backpack
         local character = player.Character or player.CharacterAdded:Wait()
-        local egg = backpack:FindFirstChild("Protein Egg") or character:FindFirstChild("Auto egg (cada 30 mins)")
+        local egg = backpack:FindFirstChild("Protein Egg") or character:FindFirstChild("Protein Egg")
         if egg then
             if egg.Parent == backpack then
                 character.Humanoid:EquipTool(egg)
@@ -1793,9 +1784,9 @@ local function useOneEgg()
     ReplicatedStorage.rEvents.proteinEggEvent:FireServer("useEgg")
 end
 
-rebirthFarmFolder:AddLabel("Farmeo OP Rebirth (From Keyzorx)")
+rebirthFarmFolder:AddLabel("OP Rebirth Farm (From HAVOC)")
 
-rebirthFarmFolder:AddTextBox("Meta De Rebirths (Doesn't work, I Won't make it work)", function(text)
+rebirthFarmFolder:AddTextBox("Target Rebirth (Doesn't work, I Won't make it work)", function(text)
     targetRebirth = tonumber(text) or math.huge
 end)
 
@@ -1809,103 +1800,4 @@ local function lockPlayerPosition(position)
     end
     
     positionLockConnection = game:GetService("RunService").Heartbeat:Connect(function()
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            player.Character.HumanoidRootPart.CFrame = position
-        end
-    end)
-end
-
--- Function to unlock player position
-local function unlockPlayerPosition()
-    if positionLockConnection then
-        positionLockConnection:Disconnect()
-        positionLockConnection = nil
-    end
-end
-
--- Add position lock toggle
-rebirthFarmFolder:AddSwitch("Bloquear tu posición", function(bool)
-    if bool then
-        -- Get current position and lock it
-        if player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            local currentPosition = player.Character.HumanoidRootPart.CFrame
-            lockPlayerPosition(currentPosition)
-        end
-    else
-        -- Unlock position
-        unlockPlayerPosition()
-    end
-end)
-
-local packFarm = rebirthFarmFolder:AddSwitch("Auto Rebirth", function(bool)
-    isRunning = bool
-    
-    task.spawn(function()
-        while isRunning do
-            local currentRebirths = player.leaderstats.Rebirths.Value
-            local rebirthCost = 10000 + (5000 * currentRebirths)
-            
-            if player.ultimatesFolder:FindFirstChild("Golden Rebirth") then
-                local goldenRebirths = player.ultimatesFolder["Golden Rebirth"].Value
-                rebirthCost = math.floor(rebirthCost * (1 - (goldenRebirths * 0.1)))
-            end
-            unequipAllPets()
-            task.wait(0.1)
-            equipUniquePet("Swift Samurai")
-            
-            while isRunning and player.leaderstats.Strength.Value < rebirthCost do
-                for i = 1, 10 do
-                    player.muscleEvent:FireServer("rep")
-                end
-                task.wait()
-            end
-            unequipAllPets()
-            task.wait(0.1)
-            equipUniquePet("Tribal Overlord")
-            local machine = findMachine("Jungle Bar Lift")
-            if machine and machine:FindFirstChild("interactSeat") then
-                player.Character.HumanoidRootPart.CFrame = machine.interactSeat.CFrame * CFrame.new(0, 3, 0)
-                repeat
-                    task.wait(0.1)
-                    pressE()
-                until player.Character.Humanoid.Sit
-            end
-            local initialRebirths = player.leaderstats.Rebirths.Value
-            repeat
-                ReplicatedStorage.rEvents.rebirthRemote:InvokeServer("rebirthRequest")
-                task.wait(0.1)
-            until player.leaderstats.Rebirths.Value > initialRebirths
-            if not isRunning then break end
-            task.wait()
-        end
-    end)
-end)
-
-local frameToggle = rebirthFarmFolder:AddSwitch("quitar particulas", function(bool)
-    local rSto = game:GetService("ReplicatedStorage")
-    for _, obj in pairs(rSto:GetChildren()) do
-        if obj.Name:match("Frame$") then
-            obj.Visible = not bool
-        end
-    end
-end)
-
-local speedGrind = rebirthFarmFolder:AddSwitch("Fuerza rapida", function(bool)
-    local isGrinding = bool
-    
-    if not bool then
-        unequipAllPets()
-        return
-    end
-    
-    equipUniquePet("Swift Samurai")
-    
-    for i = 1, 14 do
-        task.spawn(function()
-            while isGrinding do
-                player.muscleEvent:FireServer("rep")
-                task.wait()
-            end
-        end)
-    end
-end)
+        if player.Character and player.Character:FindFirstChild("Hu
