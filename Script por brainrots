@@ -1,12 +1,12 @@
 local Players = game:GetService("Players")
-local player = Players.LocalPlayer  -- Debe ser LocalScript. Si es Script de servidor, no funcionarÃ¡.
+local player = Players.LocalPlayer  -- Debe ser LocalScript. Si es Script de servidor, no funcionará.
 
 if not player then
     warn("[WHITELIST] Este script debe ejecutarse como LocalScript (LocalPlayer es nil).")
     return
 end
 
--- CONFIGURACIÃ“N
+-- CONFIGURACIÓN
 local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
     "keyler632",
     "",
@@ -20,11 +20,11 @@ local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
     "Tiomalo68",
 
 }
-local allowedUserIds = { -- OPCIONAL: aÃ±ade IDs si quieres mÃ¡xima fiabilidad
+local allowedUserIds = { -- OPCIONAL: añade IDs si quieres máxima fiabilidad
     -- 12345678, 2043745142,
 }
 
--- Normaliza nombres a minÃºsculas para evitar fallos por mayÃºsculas
+-- Normaliza nombres a minúsculas para evitar fallos por mayúsculas
 local usernameSet = {}
 for _, n in ipairs(allowedUsernames) do
     usernameSet[string.lower(n)] = true
@@ -40,20 +40,20 @@ local nameKey = string.lower(player.Name)
 local isWhitelisted = usernameSet[nameKey] or userIdSet[player.UserId] or false
 
 if not isWhitelisted then
-    warn(string.format("[WHITELIST] %s (UserId %d) NO estÃ¡ autorizado. Abortando script.", player.Name, player.UserId))
+    warn(string.format("[WHITELIST] %s (UserId %d) NO está autorizado. Abortando script.", player.Name, player.UserId))
     return
 end
 
 print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Name, player.UserId))
 
 -- ======================================================
--- DESDE AQUÃ COLOCA TU PANTALLA DE CONTRASEÃ‘A Y EL RESTO
+-- DESDE AQUÍ COLOCA TU PANTALLA DE CONTRASEÑA Y EL RESTO
 -- ======================================================
 
--- CONFIGURACIÃ“N DE CONTRASEÃ‘A
-local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseÃ±a aquÃ­
+-- CONFIGURACIÓN DE CONTRASEÑA
+local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseña aquí
 
--- Crear GUI de contraseÃ±a
+-- Crear GUI de contraseña
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextLabel = Instance.new("TextLabel")
@@ -71,7 +71,7 @@ Frame.Size = UDim2.new(0, 300, 0, 150)
 TextLabel.Parent = Frame
 TextLabel.BackgroundTransparency = 1
 TextLabel.Size = UDim2.new(1, 0, 0.4, 0)
-TextLabel.Text = "Introduce la contraseÃ±a"
+TextLabel.Text = "Introduce la contraseña"
 TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 TextLabel.Font = Enum.Font.SourceSansBold
 TextLabel.TextSize = 20
@@ -79,7 +79,7 @@ TextLabel.TextSize = 20
 TextBox.Parent = Frame
 TextBox.Position = UDim2.new(0.1, 0, 0.4, 0)
 TextBox.Size = UDim2.new(0.8, 0, 0.25, 0)
-TextBox.PlaceholderText = "ContraseÃ±a"
+TextBox.PlaceholderText = "Contraseña"
 TextBox.Text = ""
 TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)
 TextBox.Font = Enum.Font.SourceSans
@@ -94,7 +94,7 @@ Button.Font = Enum.Font.SourceSansBold
 Button.TextSize = 18
 Button.BackgroundColor3 = Color3.fromRGB(0, 170, 0)
 
--- Bloquear ejecuciÃ³n del script hasta que la contraseÃ±a sea correcta
+-- Bloquear ejecución del script hasta que la contraseña sea correcta
 local accessGranted = false
 
 Button.MouseButton1Click:Connect(function()
@@ -102,18 +102,18 @@ Button.MouseButton1Click:Connect(function()
         accessGranted = true
         ScreenGui:Destroy() -- Eliminar GUI
     else
-        TextLabel.Text = "ContraseÃ±a incorrecta"
+        TextLabel.Text = "Contraseña incorrecta"
         TextLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
     end
 end)
 
--- Esperar a que se ingrese la contraseÃ±a correcta
+-- Esperar a que se ingrese la contraseña correcta
 repeat task.wait() until accessGranted
 
 -- =========================
--- AQUÃ VA TU SCRIPT ORIGINAL
+-- AQUÍ VA TU SCRIPT ORIGINAL
 -- =========================
-print("ContraseÃ±a correcta, ejecutando script...")
+print("Contraseña correcta, ejecutando script...")
 
 -- Elerium v2 UI Library Implementation
 local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/memejames/elerium-v2-ui-library//main/Library", true))()
@@ -148,7 +148,7 @@ end
 setupAntiAFK()
 
 -- Create Main Window
-local window = library:AddWindow("Â¿ÃNGELxGAYTON"Â¿, {
+local window = library:AddWindow("¿ÁNGELxGAYTON"¿, {
     main_color = Color3.fromRGB(181, 73, 248),
     min_size = Vector2.new(800, 900),
     can_resize = true,
@@ -324,7 +324,7 @@ autoRockFolder:AddSwitch("Tiny Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Eliminamos casi todo el delay
+            -- 🔹 Eliminamos casi todo el delay
             task.wait(0.0001)
 
             if not getgenv().autoFarm then break end
@@ -335,7 +335,7 @@ autoRockFolder:AddSwitch("Tiny Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
 
-                        -- ðŸ”¹ Golpes mÃºltiples por ciclo
+                        -- 🔹 Golpes múltiples por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -343,7 +343,7 @@ autoRockFolder:AddSwitch("Tiny Rock", function(Value)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.LeftHand, 1)
                         end
 
-                        -- Si la funciÃ³n gettool existe, la ejecuta
+                        -- Si la función gettool existe, la ejecuta
                         if gettool then
                             gettool()
                         end
@@ -360,7 +360,7 @@ autoRockFolder:AddSwitch("Starter Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Eliminamos casi todo el delay
+            -- 🔹 Eliminamos casi todo el delay
             task.wait(0.0001)
 
             if not getgenv().autoFarm then break end
@@ -371,7 +371,7 @@ autoRockFolder:AddSwitch("Starter Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
 
-                        -- ðŸ”¹ Golpes mÃºltiples por ciclo
+                        -- 🔹 Golpes múltiples por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -379,7 +379,7 @@ autoRockFolder:AddSwitch("Starter Rock", function(Value)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.LeftHand, 1)
                         end
 
-                        -- Si la funciÃ³n gettool existe, la ejecuta
+                        -- Si la función gettool existe, la ejecuta
                         if gettool then
                             gettool()
                         end
@@ -396,7 +396,7 @@ autoRockFolder:AddSwitch("Legend Beach Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Eliminamos casi todo el delay
+            -- 🔹 Eliminamos casi todo el delay
             task.wait(0.0001)
 
             if not getgenv().autoFarm then break end
@@ -407,7 +407,7 @@ autoRockFolder:AddSwitch("Legend Beach Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
                         
-                        -- ðŸ”¹ Golpes mÃºltiples por ciclo
+                        -- 🔹 Golpes múltiples por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -415,7 +415,7 @@ autoRockFolder:AddSwitch("Legend Beach Rock", function(Value)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.LeftHand, 1)
                         end
 
-                        -- Si la funciÃ³n gettool existe, la ejecuta
+                        -- Si la función gettool existe, la ejecuta
                         if gettool then
                             gettool()
                         end
@@ -432,7 +432,7 @@ autoRockFolder:AddSwitch("Frozen Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Golpea mucho mÃ¡s seguido que el original
+            -- 🔹 Golpea mucho más seguido que el original
             task.wait(0.0001)
             if not getgenv().autoFarm then break end
             
@@ -442,7 +442,7 @@ autoRockFolder:AddSwitch("Frozen Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
                         
-                        -- ðŸ”¹ Multiples golpes por ciclo
+                        -- 🔹 Multiples golpes por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -466,7 +466,7 @@ autoRockFolder:AddSwitch("Mythical Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Velocidad alta pero no turbo extremo
+            -- 🔹 Velocidad alta pero no turbo extremo
             task.wait(0.0001)
             if not getgenv().autoFarm then break end
             
@@ -476,7 +476,7 @@ autoRockFolder:AddSwitch("Mythical Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
                         
-                        -- ðŸ”¹ Varios golpes seguidos en cada ciclo
+                        -- 🔹 Varios golpes seguidos en cada ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -500,7 +500,7 @@ autoRockFolder:AddSwitch("Eternal Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Velocidad intermedia (rÃ¡pida pero no turbo extremo)
+            -- 🔹 Velocidad intermedia (rápida pero no turbo extremo)
             task.wait(0.0001)
             if not getgenv().autoFarm then break end
             
@@ -510,7 +510,7 @@ autoRockFolder:AddSwitch("Eternal Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
                         
-                        -- ðŸ”¹ Golpea varias veces por ciclo
+                        -- 🔹 Golpea varias veces por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -534,7 +534,7 @@ autoRockFolder:AddSwitch("Legend Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Eliminamos casi todo el delay
+            -- 🔹 Eliminamos casi todo el delay
             task.wait(0.0001)
 
             if not getgenv().autoFarm then break end
@@ -545,7 +545,7 @@ autoRockFolder:AddSwitch("Legend Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand")
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
 
-                        -- ðŸ”¹ Golpes mÃºltiples por ciclo
+                        -- 🔹 Golpes múltiples por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -553,7 +553,7 @@ autoRockFolder:AddSwitch("Legend Rock", function(Value)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.LeftHand, 1)
                         end
 
-                        -- Si la funciÃ³n gettool existe, la ejecuta
+                        -- Si la función gettool existe, la ejecuta
                         if gettool then
                             gettool()
                         end
@@ -573,7 +573,7 @@ local LocalPlayer = Players.LocalPlayer
 local RightHand = LocalPlayer.Character:FindFirstChild("RightHand") or LocalPlayer.Character:FindFirstChild("Right Arm")
 local LeftHand = LocalPlayer.Character:FindFirstChild("LeftHand") or LocalPlayer.Character:FindFirstChild("Left Arm")
 
--- ConfiguraciÃ³n del intervalo mÃ­nimo que el servidor acepta
+-- Configuración del intervalo mínimo que el servidor acepta
 local minInterval = 0.05 -- Ajusta si notas golpes perdidos
 
 autoRockFolder:AddSwitch("Auto Bug Pets", function(Value)
@@ -596,7 +596,7 @@ autoRockFolder:AddSwitch("Auto Bug Pets", function(Value)
                     firetouchinterest(rock, LeftHand, 0)
                     firetouchinterest(rock, LeftHand, 1)
                     
-                    -- PequeÃ±o delay para que el golpe cuente
+                    -- Pequeño delay para que el golpe cuente
                     task.wait(minInterval)
                 end
             end
@@ -624,7 +624,7 @@ autoRockFolder:AddSwitch("Muscle King Rock", function(Value)
                         firetouchinterest(v.Parent.Rock, LeftHand, 0)
                         firetouchinterest(v.Parent.Rock, LeftHand, 1)
 
-                        task.wait(minInterval) -- Espera el mÃ­nimo para que cuente siempre
+                        task.wait(minInterval) -- Espera el mínimo para que cuente siempre
                     end
                 end
             end
@@ -639,7 +639,7 @@ autoRockFolder:AddSwitch("Jungle Rock", function(Value)
     
     task.spawn(function()
         while getgenv().autoFarm do
-            -- ðŸ”¹ Eliminamos casi todo el delay
+            -- 🔹 Eliminamos casi todo el delay
             task.wait(0.0001)
 
             if not getgenv().autoFarm then break end
@@ -650,7 +650,7 @@ autoRockFolder:AddSwitch("Jungle Rock", function(Value)
                     and game.Players.LocalPlayer.Character:FindFirstChild("LeftHand") 
                     and game.Players.LocalPlayer.Character:FindFirstChild("RightHand") then
 
-                        -- ðŸ”¹ Golpes mÃºltiples por ciclo
+                        -- 🔹 Golpes múltiples por ciclo
                         for g = 1, 5 do
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 0)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.RightHand, 1)
@@ -658,7 +658,7 @@ autoRockFolder:AddSwitch("Jungle Rock", function(Value)
                             firetouchinterest(v.Parent.Rock, game.Players.LocalPlayer.Character.LeftHand, 1)
                         end
 
-                        -- Si la funciÃ³n gettool existe, la ejecuta
+                        -- Si la función gettool existe, la ejecuta
                         if gettool then
                             gettool()
                         end
@@ -686,8 +686,8 @@ rebirthsFolder:AddTextBox("Rebirth Target", function(text)
         })
     else
         game:GetService("StarterGui"):SetCore("SendNotification", {
-            Title = "Entrada InvÃ¡lida",
-            Text = "Por favor ingresa un nÃºmero vÃ¡lido mayor que 0",
+            Title = "Entrada Inválida",
+            Text = "Por favor ingresa un número válido mayor que 0",
             Duration = 0
         })
     end
@@ -716,7 +716,7 @@ local targetSwitch = rebirthsFolder:AddSwitch("Auto Rebirth Target", function(bo
                     _G.targetRebirthActive = false
                     
                     game:GetService("StarterGui"):SetCore("SendNotification", {
-                        Title = "Â¡Objetivo Alcanzado!",
+                        Title = "¡Objetivo Alcanzado!",
                         Text = "Has alcanzado " .. tostring(targetRebirthValue) .. " renacimientos",
                         Duration = 5
                     })
@@ -728,7 +728,7 @@ local targetSwitch = rebirthsFolder:AddSwitch("Auto Rebirth Target", function(bo
             end
         end)
     end
-end, "Renacimiento automÃ¡tico hasta alcanzar el objetivo")
+end, "Renacimiento automático hasta alcanzar el objetivo")
 
 infiniteSwitch = rebirthsFolder:AddSwitch("Auto Rebirth (Infinite)", function(bool)
     _G.infiniteRebirthActive = bool
@@ -749,7 +749,7 @@ infiniteSwitch = rebirthsFolder:AddSwitch("Auto Rebirth (Infinite)", function(bo
     end
 end, "Renacimiento continuo sin parar")
 
--- ðŸ”¹ Bloqueo de posiciÃ³n
+-- 🔹 Bloqueo de posición
 local positionLockConnection = nil
 local function lockPlayerPosition(position)
     if positionLockConnection then positionLockConnection:Disconnect() end
@@ -787,7 +787,7 @@ local sizeSwitch = rebirthsFolder:AddSwitch("Auto Size 2", function(bool)
             end
         end)
     end
-end, "Establece el tamaÃ±o del personaje a 2 continuamente")
+end, "Establece el tamaño del personaje a 2 continuamente")
 
 local teleportSwitch = rebirthsFolder:AddSwitch("Auto Teleport to Muscle King", function(bool)
     _G.teleportActive = bool
@@ -801,7 +801,7 @@ local teleportSwitch = rebirthsFolder:AddSwitch("Auto Teleport to Muscle King", 
             end
         end)
     end
-end, "Teletransporte continuo al Rey MÃºsculo")
+end, "Teletransporte continuo al Rey Músculo")
 
 local autoEquipToolsFolder = farmPlusTab:AddFolder("Auto Equip Tools")
 
@@ -841,7 +841,7 @@ autoEquipToolsFolder:AddSwitch("Auto Weight", function(Value)
             task.wait(0.1)
         end
     end)
-end, "Levanta pesas automÃ¡ticamente")
+end, "Levanta pesas automáticamente")
 
 -- Auto Pushups Toggle
 autoEquipToolsFolder:AddSwitch("Auto Pushups", function(Value)
@@ -867,7 +867,7 @@ autoEquipToolsFolder:AddSwitch("Auto Pushups", function(Value)
             task.wait(0.1)
         end
     end)
-end, "Haz flexiones automÃ¡ticamente")
+end, "Haz flexiones automáticamente")
 
 -- Auto Handstands Toggle
 autoEquipToolsFolder:AddSwitch("Auto Handstands", function(Value)
@@ -893,7 +893,7 @@ autoEquipToolsFolder:AddSwitch("Auto Handstands", function(Value)
             task.wait(0.1)
         end
     end)
-end, "Haz paradas de manos automÃ¡ticamente")
+end, "Haz paradas de manos automáticamente")
 
 -- Auto Situps Toggle
 autoEquipToolsFolder:AddSwitch("Auto Situps", function(Value)
@@ -919,7 +919,7 @@ autoEquipToolsFolder:AddSwitch("Auto Situps", function(Value)
             task.wait(0.1)
         end
     end)
-end, "Haz abdominales automÃ¡ticamente")
+end, "Haz abdominales automáticamente")
 
 -- Auto Punch Toggle
 autoEquipToolsFolder:AddSwitch("Auto Punch", function(Value)
@@ -969,7 +969,7 @@ autoEquipToolsFolder:AddSwitch("Auto Punch", function(Value)
             equipped.Parent = game.Players.LocalPlayer.Backpack
         end
     end
-end, "Golpea automÃ¡ticamente")
+end, "Golpea automáticamente")
 
 -- Fast Tools Toggle
 autoEquipToolsFolder:AddSwitch("Fast Tools", function(Value)
@@ -1038,10 +1038,10 @@ local sessionStartRebirths = 0
 local sessionStartBrawls = 0
 local hasStartedTracking = false
 
--- Crear una carpeta en farmPlusTab para estadÃ­sticas
+-- Crear una carpeta en farmPlusTab para estadísticas
 local statsFolder = farmPlusTab:AddFolder("Stats")
 
--- Crear etiquetas para las estadÃ­sticas solicitadas
+-- Crear etiquetas para las estadísticas solicitadas
 statsFolder:AddLabel("Strength")
 local strengthStatsLabel = statsFolder:AddLabel("Actual: Waiting...")
 local strengthGainLabel = statsFolder:AddLabel("Gained: 0")
@@ -1065,7 +1065,7 @@ local brawlsGainLabel = statsFolder:AddLabel("Gained: 0")
 statsFolder:AddLabel("Time Of Session")
 local sessionTimeLabel = statsFolder:AddLabel("Time: 00:00:00")
 
--- FunciÃ³n para formatear nÃºmeros
+-- Función para formatear números
 local function formatNumber(number)
     if number >= 1e15 then return string.format("%.2fQ", number/1e15)
     elseif number >= 1e12 then return string.format("%.2fT", number/1e12)
@@ -1113,11 +1113,11 @@ local function startTracking()
     end
 end
 
--- FunciÃ³n para actualizar estadÃ­sticas
+-- Función para actualizar estadísticas
 local function updateStats()
     local player = game.Players.LocalPlayer
     
-    -- Iniciar seguimiento si aÃºn no ha comenzado
+    -- Iniciar seguimiento si aún no ha comenzado
     if not hasStartedTracking then
         startTracking()
     end
@@ -1135,7 +1135,7 @@ local function updateStats()
     local rebirthsGain = currentRebirths - sessionStartRebirths
     local brawlsGain = currentBrawls - sessionStartBrawls
     
-    -- Actualizar valores de estadÃ­sticas actuales
+    -- Actualizar valores de estadísticas actuales
     strengthStatsLabel.Text = string.format("Actual: %s", formatNumber(currentStrength))
     durabilityStatsLabel.Text = string.format("Actual: %s", formatNumber(currentDurability))
     rebirthsStatsLabel.Text = string.format("Actual: %s", formatNumber(currentRebirths))
@@ -1149,16 +1149,16 @@ local function updateStats()
     killsGainLabel.Text = string.format("Gained: %s", formatNumber(killsGain))
     brawlsGainLabel.Text = string.format("Gained: %s", formatNumber(brawlsGain))
     
-    -- Actualizar tiempo de sesiÃ³n
+    -- Actualizar tiempo de sesión
     local elapsedTime = os.time() - sessionStartTime
     local timeString = formatTime(elapsedTime)
     sessionTimeLabel.Text = string.format("Time: %s", timeString)
 end
 
--- Actualizar estadÃ­sticas inicialmente
+-- Actualizar estadísticas inicialmente
 updateStats()
 
--- Actualizar estadÃ­sticas cada 2 segundos
+-- Actualizar estadísticas cada 2 segundos
 spawn(function()
     while wait(2) do
         updateStats()
@@ -1176,22 +1176,22 @@ statsFolder:AddButton("Reset Stats", function()
     sessionStartTime = os.time()
     
     game:GetService("StarterGui"):SetCore("SendNotification", {
-        Title = "Seguimiento de EstadÃ­sticas",
-        Text = "Â¡El seguimiento de progreso de la sesiÃ³n ha sido reiniciado!",
+        Title = "Seguimiento de Estadísticas",
+        Text = "¡El seguimiento de progreso de la sesión ha sido reiniciado!",
         Duration = 0
     })
 end)
 
-statsFolder:AddButton("Copiar EstadÃ­sticas", function()
+statsFolder:AddButton("Copiar Estadísticas", function()
     local player = game.Players.LocalPlayer
-    local statsText = "EstadÃ­sticas de Muscle Legends:\n\n"
+    local statsText = "Estadísticas de Muscle Legends:\n\n"
     
     statsText = statsText .. "Strength: " .. formatNumberWithCommas(player.leaderstats.Strength.Value) .. "\n"
     statsText = statsText .. "Durability: " .. formatNumberWithCommas(player.Durability.Value) .. "\n"
     statsText = statsText .. "Rebirths: " .. formatNumberWithCommas(player.leaderstats.Rebirths.Value) .. "\n"
     statsText = statsText .. "Kills: " .. formatNumberWithCommas(player.leaderstats.Kills.Value) .. "\n"
     
-    -- Agregar estadÃ­sticas de sesiÃ³n si el seguimiento ha comenzado
+    -- Agregar estadísticas de sesión si el seguimiento ha comenzado
     if hasStartedTracking then
         local elapsedTime = os.time() - sessionStartTime
         local strengthGain = player.leaderstats.Strength.Value - sessionStartStrength
@@ -1199,7 +1199,7 @@ statsFolder:AddButton("Copiar EstadÃ­sticas", function()
         local killsGain = player.leaderstats.Kills.Value - sessionStartKills
         local rebirthsGain = player.leaderstats.Rebirths.Value - sessionStartRebirths
         
-        statsText = statsText .. "--- EstadÃ­sticas de SesiÃ³n ---\n"
+        statsText = statsText .. "--- Estadísticas de Sesión ---\n"
         statsText = statsText .. "Time Of Session: " .. formatTime(elapsedTime) .. "\n"
         statsText = statsText .. "Strength Gained: " .. formatNumberWithCommas(strengthGain) .. "\n"
         statsText = statsText .. "Durability Gained: " .. formatNumberWithCommas(durabilityGain) .. "\n"
@@ -1649,7 +1649,7 @@ misc1Folder:AddSwitch("Jumpy Infinite", function(bool)
         
         game:GetService("StarterGui"):SetCore("SendNotification", {
             Title = "Salto Infinito Activado",
-            Text = "Ahora puedes saltar sin lÃ­mites",
+            Text = "Ahora puedes saltar sin límites",
             Duration = 0
         })
     end
@@ -1668,7 +1668,7 @@ local timeDropdown = misc1Folder:AddDropdown("Change Time", function(selection)
     
     game:GetService("StarterGui"):SetCore("SendNotification", {
         Title = "Hora Cambiada",
-        Text = "La hora del dÃ­a ha sido cambiada a: " .. selection,
+        Text = "La hora del día ha sido cambiada a: " .. selection,
         Duration = 0
     })
 end)
