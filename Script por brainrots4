@@ -9,15 +9,15 @@ end
 -- CONFIGURACIÓN
 local allowedUsernames = { -- NOMBRES EXACTOS (Name), no DisplayName
     "keyler632",
-    "",
     "Zarza0700",
     "",
     "",
-    "Santiago178930193",
-    "edwart0022",
-    "Gabrielagustin20",
-    "Thomas2345z",
-    "Tiomalo68",
+    "",
+    "",
+    "",
+    "",
+    "",
+    "thomas2345z",
 
 }
 local allowedUserIds = { -- OPCIONAL: añade IDs si quieres máxima fiabilidad
@@ -51,7 +51,7 @@ print(string.format("[WHITELIST] Acceso permitido a %s (UserId %d).", player.Nam
 -- ======================================================
 
 -- CONFIGURACIÓN DE CONTRASEÑA
-local scriptPassword = "ANGEL-GAYTON" -- Cambia la contraseña aquí
+local scriptPassword = "CUALfue0302" -- Cambia la contraseña aquí
 
 -- Crear GUI de contraseña
 local ScreenGui = Instance.new("ScreenGui")
@@ -148,8 +148,8 @@ end
 setupAntiAFK()
 
 -- Create Main Window
-local window = library:AddWindow("¿ÁNGELxGAYTON"¿, {
-    main_color = Color3.fromRGB(181, 73, 248),
+local window = library:AddWindow("Mileniums Hub | Paid Version", {
+    main_color = Color3.fromRGB(74, 8, 1),
     min_size = Vector2.new(800, 900),
     can_resize = true,
 })
@@ -159,7 +159,7 @@ local mainTab = window:AddTab("Menu")
 local farmPlusTab = window:AddTab("Farm")
 mainTab:Show() -- Show this tab by default
 
-mainTab:AddLabel("ON*TOP")
+mainTab:AddLabel("estructured by keyzorxx")
 
 local jungleGymFolder = mainTab:AddFolder("Jungle Gym")
 
@@ -1788,7 +1788,7 @@ local function useOneEgg()
     ReplicatedStorage.rEvents.proteinEggEvent:FireServer("useEgg")
 end
 
-rebirthFarmFolder:AddLabel("OP Rebirth Farm (From HAVOC)")
+rebirthFarmFolder:AddLabel("OP Rebirth Farm (From Keyzorxx)")
 
 rebirthFarmFolder:AddTextBox("Target Rebirth (Doesn't work, I Won't make it work)", function(text)
     targetRebirth = tonumber(text) or math.huge
@@ -1842,7 +1842,7 @@ local packFarm = rebirthFarmFolder:AddSwitch("Rebirth Farm", function(bool)
             
             if player.ultimatesFolder:FindFirstChild("Golden Rebirth") then
                 local goldenRebirths = player.ultimatesFolder["Golden Rebirth"].Value
-                rebirthCost = math.floor(rebirthCost * (1 - (goldenRebirths * 0.1)))
+                rebirthCost = math.floor(rebirthCost * (1 - (goldenRebirths * 0.01)))
             end
             unequipAllPets()
             task.wait(0.1)
